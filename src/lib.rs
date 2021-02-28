@@ -84,6 +84,10 @@ where
                 let x = <LineString<T> as FromTokens<T>>::from_tokens_with_parens(tokens);
                 x.map(|y| y.as_item())
             }
+            w if w.eq_ignore_ascii_case("LINEARRING") => {
+                let x = <LineString<T> as FromTokens<T>>::from_tokens_with_parens(tokens);
+                x.map(|y| y.as_item())
+            }
             w if w.eq_ignore_ascii_case("POLYGON") => {
                 let x = <Polygon<T> as FromTokens<T>>::from_tokens_with_parens(tokens);
                 x.map(|y| y.as_item())
